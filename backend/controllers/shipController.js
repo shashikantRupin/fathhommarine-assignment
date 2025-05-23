@@ -75,9 +75,7 @@ const mockShipData = [
   }
 ];
 
-// @desc    Get ship details by name
-// @route   GET /api/ships/details
-// @access  Private
+
 exports.getShipDetails = async (req, res, next) => {
   try {
     const errors = validationResult(req);
@@ -118,9 +116,7 @@ exports.getShipDetails = async (req, res, next) => {
   }
 };
 
-// @desc    Get all ships
-// @route   GET /api/ships
-// @access  Private
+
 exports.getAllShips = async (req, res, next) => {
   try {
     res.status(200).json({
@@ -133,9 +129,7 @@ exports.getAllShips = async (req, res, next) => {
   }
 };
 
-// @desc    Create a new ship record
-// @route   POST /api/ships
-// @access  Private
+
 exports.createShip = async (req, res, next) => {
   try {
     const errors = validationResult(req);

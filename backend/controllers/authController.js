@@ -14,7 +14,6 @@ exports.register = async (req, res, next) => {
     
     const { name, email, password, role } = req.body;
 
-    // Check if user exists
     const userExists = await User.findOne({ email });
 
     if (userExists) {
@@ -24,7 +23,6 @@ exports.register = async (req, res, next) => {
       });
     }
 
-    // Create user
     const user = await User.create({
       name,
       email,
