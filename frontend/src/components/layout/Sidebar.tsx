@@ -23,10 +23,10 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, toggleSidebar }) => {
 
   const navItems = [
     { icon: <LayoutDashboard size={20} />, label: 'Dashboard', path: '/dashboard' },
-    { icon: <Ship size={20} />, label: 'Ships', path: '/ships' },
-    { icon: <Map size={20} />, label: 'Mapping', path: '/mapping' },
-    { icon: <FileText size={20} />, label: 'Reports', path: '/reports' },
-    { icon: <Settings size={20} />, label: 'Settings', path: '/settings' },
+    // { icon: <Ship size={20} />, label: 'Ships', path: '/ships' },
+    // { icon: <Map size={20} />, label: 'Mapping', path: '/mapping' },
+    // { icon: <FileText size={20} />, label: 'Reports', path: '/reports' },
+    // { icon: <Settings size={20} />, label: 'Settings', path: '/settings' },
   ];
 
   const isActivePath = (path: string) => {
