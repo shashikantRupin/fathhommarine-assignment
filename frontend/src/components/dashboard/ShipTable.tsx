@@ -90,7 +90,7 @@ const ShipTable: React.FC<ShipTableProps> = ({ ships, isLoading }) => {
   }
 
   return (
-    <div className="rounded-lg border border-gray-200 bg-white shadow-sm overflow-hidden">
+    <div className="rounded-lg border border-gray-500 bg-white shadow-sm overflow-hidden">
       <div className="p-4 border-b border-gray-200">
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
           <h2 className="text-lg font-semibold text-gray-800">All Ships</h2>
@@ -111,100 +111,95 @@ const ShipTable: React.FC<ShipTableProps> = ({ ships, isLoading }) => {
       </div>
       
       <div className="overflow-x-auto">
-        <table className="min-w-full divide-y divide-gray-200">
-          <thead className="bg-gray-50">
-            <tr>
-              <th 
-                scope="col" 
-                className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider cursor-pointer"
-                onClick={() => handleSort('name')}
-              >
-                <span className="flex items-center">
-                  Ship Name {getSortIcon('name')}
-                </span>
-              </th>
-              <th 
-                scope="col" 
-                className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider cursor-pointer"
-                onClick={() => handleSort('type')}
-              >
-                <span className="flex items-center">
-                  Type {getSortIcon('type')}
-                </span>
-              </th>
-              <th 
-                scope="col" 
-                className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider cursor-pointer"
-                onClick={() => handleSort('status')}
-              >
-                <span className="flex items-center">
-                  Status {getSortIcon('status')}
-                </span>
-              </th>
-              <th 
-                scope="col" 
-                className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider cursor-pointer"
-                onClick={() => handleSort('lastUpdated')}
-              >
-                <span className="flex items-center">
-                  Last Updated {getSortIcon('lastUpdated')}
-                </span>
-              </th>
-              <th 
-                scope="col" 
-                className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider cursor-pointer"
-                onClick={() => handleSort('crew')}
-              >
-                <span className="flex items-center">
-                  Crew {getSortIcon('crew')}
-                </span>
-              </th>
-              <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                Location
-              </th>
-            </tr>
-          </thead>
-          <tbody className="bg-white divide-y divide-gray-200">
-            {sortedShips.length > 0 ? (
-              sortedShips.map((ship) => (
-                <tr key={ship.id} className="hover:bg-gray-50">
-                  <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
-                    {ship.name}
-                  </td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                    {ship.type}
-                  </td>
-                  <td className="px-6 py-4 whitespace-nowrap">
-                    <span className={`px-2 py-1 inline-flex text-xs leading-5 font-semibold rounded-full ${getStatusColor(ship.status)}`}>
-                      {ship.status.charAt(0).toUpperCase() + ship.status.slice(1)}
-                    </span>
-                  </td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                    {new Date(ship.lastUpdated).toLocaleString()}
-                  </td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                    {ship.crew}
-                  </td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                    {ship.location.port ? (
-                      ship.location.port
-                    ) : (
-                      <span>
-                        {ship.location.latitude.toFixed(2)}, {ship.location.longitude.toFixed(2)}
-                      </span>
-                    )}
-                  </td>
-                </tr>
-              ))
-            ) : (
-              <tr>
-                <td colSpan={6} className="px-6 py-4 text-center text-gray-500">
-                  {searchTerm ? 'No ships match your search criteria' : 'No ships available'}
-                </td>
-              </tr>
-            )}
-          </tbody>
-        </table>
+      <table className="min-w-full divide-y divide-gray-200">
+  <thead className="bg-gray-50">
+    <tr>
+      <th
+        scope="col"
+        className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider cursor-pointer"
+        onClick={() => handleSort('name')}
+      >
+        <span className="flex items-center">
+          Ship Name {getSortIcon('name')}
+        </span>
+      </th>
+      <th
+        scope="col"
+        className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider cursor-pointer"
+        onClick={() => handleSort('type')}
+      >
+        <span className="flex items-center">
+          Type {getSortIcon('type')}
+        </span>
+      </th>
+      <th
+        scope="col"
+        className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider cursor-pointer"
+        onClick={() => handleSort('status')}
+      >
+        <span className="flex items-center">
+          Status {getSortIcon('status')}
+        </span>
+      </th>
+      <th
+        scope="col"
+        className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider cursor-pointer"
+        onClick={() => handleSort('flag')}
+      >
+        <span className="flex items-center">
+          Flag {getSortIcon('flag')}
+        </span>
+      </th>
+      <th
+        scope="col"
+        className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider cursor-pointer"
+        onClick={() => handleSort('owner')}
+      >
+        <span className="flex items-center">
+          Owner {getSortIcon('owner')}
+        </span>
+      </th>
+      <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+        Operator
+      </th>
+    </tr>
+  </thead>
+  <tbody className="bg-white divide-y divide-gray-200">
+    {sortedShips.length > 0 ? (
+      sortedShips.map((ship) => (
+        <tr key={ship?.id} className="hover:bg-gray-50">
+          <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+            {ship?.name}
+          </td>
+          <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+            {ship?.type}
+          </td>
+          <td className="px-6 py-4 whitespace-nowrap">
+            <span className={`px-2 py-1 inline-flex text-xs leading-5 font-semibold rounded-full ${getStatusColor(ship?.status)}`}>
+              {ship?.status?.charAt(0).toUpperCase() + ship?.status?.slice(1)}
+            </span>
+          </td>
+          <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+            {ship?.flag}
+          </td>
+          <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+            {ship?.owner}
+          </td>
+          <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+            {ship?.operator}
+          </td>
+        </tr>
+      ))
+    ) : (
+      <tr>
+        <td colSpan={6} className="px-6 py-4 text-center text-gray-500">
+          {searchTerm ? 'No ships match your search criteria' : 'No ships available'}
+        </td>
+      </tr>
+    )}
+  </tbody>
+</table>
+
       </div>
     </div>
   );

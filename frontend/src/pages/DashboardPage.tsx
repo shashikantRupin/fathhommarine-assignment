@@ -18,9 +18,10 @@ const DashboardPage: React.FC = () => {
       try {
         // Fetch ships
         setIsLoadingShips(true);
-        const shipsData = await shipsAPI.getAllShips();
+        const shipsData:any = await shipsAPI.getAllShips();
         // Ensure shipsData is an array before setting state
-        setShips(Array.isArray(shipsData) ? shipsData : []);
+        console.log("shipData",shipsData);
+        setShips(Array.isArray(shipsData?.data) ? shipsData?.data : []);
         setIsLoadingShips(false);
 
         // Fetch stats
@@ -115,7 +116,7 @@ const DashboardPage: React.FC = () => {
 
       {/* Ship Search */}
       <div className="mt-8">
-        <ShipSearch />
+        {/* <ShipSearch /> */}
       </div>
 
       {/* Ships Table */}
